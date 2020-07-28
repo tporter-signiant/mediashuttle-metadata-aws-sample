@@ -1,5 +1,8 @@
 node_modules
 
+# deploy directory
+deploy
+
 # CDK asset staging directory
 .cdk.staging
 cdk.out

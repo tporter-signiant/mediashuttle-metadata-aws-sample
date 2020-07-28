@@ -1,20 +1,26 @@
 {
-  "name": "aws-metadata-sample",
-  "version": "0.1.0",
-  "bin": {
-    "aws-metadata-sample": "bin/aws-metadata-sample.js"
-  },
+  "name": "mediashuttle-metadata-aws-sample",
+  "version": "1.0.0",
+  "description": "Sample project to demonstrate how to set up a Media Shuttle Metadata collection form using Amazon Web Services (AWS)",
   "scripts": {
-    "build": "echo \"The build step is not required when using JavaScript!\" && exit 0",
+    "build": "npm run build:zip && npm ci",
+    "build:clean": "mkdir -p deploy/lambda && rm -rf deploy/lambda/*",
+    "build:zip": "npm run build:clean && npm ci --production && zip -r deploy/lambda/function.zip node_modules index.js > /dev/null",
     "cdk": "cdk",
-    "test": "jest"
+    "deploy": "cdk deploy '*' --require-approval never"
   },
   "devDependencies": {
-    "@aws-cdk/assert": "1.54.0",
+    "@aws-cdk/aws-apigatewayv2": "^1.54.0",
+    "@aws-cdk/aws-lambda": "^1.54.0",
+    "@aws-cdk/aws-s3": "^1.54.0",
+    "@aws-cdk/aws-s3-deployment": "^1.54.0",
+    "@aws-cdk/core": "1.54.0",
     "aws-cdk": "1.54.0",
-    "jest": "^25.5.0"
+    "prettier": "^2.0.5"
   },
   "dependencies": {
-    "@aws-cdk/core": "1.54.0"
+    "aws-sdk": "^2.720.0",
+    "ejs": "^3.1.3",
+    "querystring": "^0.2.0"
   }
 }

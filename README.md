@@ -1,12 +1,30 @@
-# Welcome to your CDK JavaScript project!
+# Media Shuttle Metadata Sample Using AWS
 
-This is a blank project for JavaScript development with CDK.
+A sample project demonstrating the basics of setting up a metadata collection form for a Media Shuttle Submit portal
+using Amazon Web Services (AWS).
 
-The `cdk.json` file tells the CDK Toolkit how to execute your app. The build step is not required when using JavaScript.
+## Architecture
 
-## Useful commands
+![architecture](img/architecture.png)
 
- * `npm run test`         perform the jest unit tests
- * `cdk deploy`           deploy this stack to your default AWS account/region
- * `cdk diff`             compare deployed stack with current state
- * `cdk synth`            emits the synthesized CloudFormation template
+The sample uses a simple web service pattern where an API Gateway registering an HTTP API endpoint proxies
+incoming requests to a backing Lambda function for processing. The Lambda function also makes use of a static
+HTML template file stored in an S3 bucket.
+
+## Getting Started
+
+This sample project includes a fully deployable sample web service that can be deployed to your AWS account
+using the AWS CDK after replacing two placeholder variables in `bin/mediashuttle-metadata-service-stack.js` 
+
+1. Replace the placeholder value of the `REGISTRATION_KEY` variable with the registration key generated for your Submit
+portal. The registration key can be generated and retrieved from the Metadata configuration page in the Media Shuttle
+portal admin console.
+ 
+2. Replace the placeholder value of the `S3_BUCKET_NAME` variable with a bucket name of your choice where the sample
+static HTML form template file will be deployed to and fetched by the lambda when requested by Media Shuttle.
+
+### Installation and Deployment
+
+`npm run build` - prepares the project for deployment
+
+`npm run deploy` - deploys CDK stack to your default AWS account/region
