@@ -21,7 +21,7 @@ class MediaShuttleMetadataServiceStack extends Stack {
     constructor(scope, id, props) {
         super(scope, id, props);
 
-        // Lambda function that responds to HTTP requests to fetch and process the metadata form
+        // Lambda function that responds to HTTP requests to fetch and process the metadata form.
         const metadataLambda = new Function(this, 'MediaShuttleMetadataHandler', {
             runtime: Runtime.NODEJS_12_X,
             code: Code.fromAsset(path.join(__dirname, '../deploy/lambda/function.zip')),
@@ -32,38 +32,31 @@ class MediaShuttleMetadataServiceStack extends Stack {
             },
         });
 
-        // API Gateway HTTP endpoint that proxies metadata requests to the lambda function
+        // API Gateway HTTP endpoint that proxies metadata requests to the lambda function.
         const metadataHttpApi = new HttpApi(this, 'MediaShuttleMetadataEndpoint', {
             defaultIntegration: new LambdaProxyIntegration({
                 handler: metadataLambda,
             }),
         });
 
-        // S3 bucket for storing the metadata HTML form template that the lambda fetches, injects data into and returns
+        // S3 bucket for storing the metadata HTML form template that the lambda fetches/injects data into and returns.
         const metadataBucket = new Bucket(this, 'MediaShuttleMetadataBucket', {
             bucketName: S3_BUCKET_NAME,
         });
 
-        // Grant the lambda function read permissions on the S3 bucket
+        // Grant the lambda function read permissions on the S3 bucket.
         metadataBucket.grantRead(metadataLambda);
 
-        // THe metadata HTML form template
+        // The metadata HTML form template.
         new BucketDeployment(this, 'MediaShuttleMetadataForm', {
             sources: [Source.asset(path.join(__dirname, '../assets'))],
             destinationBucket: metadataBucket,
         });
 
-        new CfnOutput(this, 'Lambda Function', {
-            value: metadataLambda.functionArn,
-        });
-
-        new CfnOutput(this, 'S3 Bucket', {
-            value: metadataBucket.bucketArn,
-        });
-
-        new CfnOutput(this, 'Metadata HTTP API Base Url', {
-            value: metadataHttpApi.url,
-        });
+        // Cloud formation template outputs.
+        new CfnOutput(this, 'Lambda Function', { value: metadataLambda.functionArn });
+        new CfnOutput(this, 'S3 Bucket', { value: metadataBucket.bucketArn });
+        new CfnOutput(this, 'Metadata HTTP API Base Url', { value: metadataHttpApi.url });
     }
 }
 
