@@ -23,8 +23,20 @@ portal admin console.
 2. Replace the placeholder value of the `S3_BUCKET_NAME` variable with a bucket name of your choice where the sample
 static HTML form template file will be deployed to and fetched by the lambda when requested by Media Shuttle.
 
-### Installation and Deployment
+Following this, the sample service can be built and deployed by running the following two commands:
 
 `npm run build` - prepares the project for deployment
 
 `npm run deploy` - deploys CDK stack to your default AWS account/region
+
+Finally, after being deployed to AWS, your Media Shuttle Submit portal metadata configuration needs to be updated to
+reflect the Metadata form URL Media Shuttle should use to access your form.
+
+Update the `Metadata provider URL` setting
+under `Metadata` in the Media Shuttle portal admin console to the value of
+`MediaShuttleMetadataServiceStack.MetadataHTTPAPIBaseUrl` in the `Outputs` section displayed to the console as a result
+running the deploy command above with the path `/form` appended.
+
+For example, if the value of `MediaShuttleMetadataServiceStack.MetadataHTTPAPIBaseUrl` is
+`https://w10jqm3uub.execute-api.us-east-1.amazonaws.com/`, the value of `Metadata provider URL` should be
+`https://w10jqm3uub.execute-api.us-east-1.amazonaws.com/form`.
