@@ -14,17 +14,18 @@
     "deploy": "cdk deploy '*' --require-approval never"
   },
   "devDependencies": {
-    "@aws-cdk/aws-apigatewayv2": "^1.54.0",
-    "@aws-cdk/aws-lambda": "^1.54.0",
-    "@aws-cdk/aws-s3": "^1.54.0",
-    "@aws-cdk/aws-s3-deployment": "^1.54.0",
-    "@aws-cdk/core": "1.54.0",
-    "aws-cdk": "1.54.0",
+    "@aws-cdk/aws-apigatewayv2": "^1.87.0",
+    "@aws-cdk/aws-apigatewayv2-integrations": "^1.87.0",
+    "@aws-cdk/aws-lambda": "^1.87.0",
+    "@aws-cdk/aws-s3": "^1.87.0",
+    "@aws-cdk/aws-s3-deployment": "^1.87.0",
+    "@aws-cdk/core": "^1.87.0",
+    "aws-cdk": "^1.87.0",
     "prettier": "^2.0.5"
   },
   "dependencies": {
-    "aws-sdk": "^2.720.0",
-    "ejs": "^3.1.3",
+    "aws-sdk": "^2.831.0",
+    "ejs": "^3.1.5",
     "querystring": "^0.2.0"
   }
 }
