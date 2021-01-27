@@ -1,7 +1,8 @@
 const path = require('path');
 const { Stack, CfnOutput } = require('@aws-cdk/core');
 const { Function, Runtime, Code } = require('@aws-cdk/aws-lambda');
-const { HttpApi, LambdaProxyIntegration } = require('@aws-cdk/aws-apigatewayv2');
+const { HttpApi } = require('@aws-cdk/aws-apigatewayv2');
+const { LambdaProxyIntegration } = require('@aws-cdk/aws-apigatewayv2-integrations');
 const { Bucket } = require('@aws-cdk/aws-s3');
 const { BucketDeployment, Source } = require('@aws-cdk/aws-s3-deployment');
 
