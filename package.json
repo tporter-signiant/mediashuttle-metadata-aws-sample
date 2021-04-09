@@ -1,6 +1,6 @@
 {
   "name": "mediashuttle-metadata-aws-sample",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Sample project to demonstrate how to set up a Media Shuttle Metadata collection form using Amazon Web Services (AWS)",
   "keywords": [
     "signiant",
