@@ -8,7 +8,7 @@ const { BucketDeployment, Source } = require('@aws-cdk/aws-s3-deployment');
 
 // Media Shuttle Submit Portal Registration key to secure requests between Media Shuttle and the external Metadata
 // form service.
-const REGISTRATION_KEY = '1287f7c7-b792-4c4f-9333-83254ba20af9';
+const REGISTRATION_KEY = '<Insert Your Media Shuttle Submit Portal Metadata Registration Key Here>';
 
 class MediaShuttleMetadataServiceStack extends Stack {
     constructor(scope, id, props) {
