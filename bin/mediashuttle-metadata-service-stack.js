@@ -8,7 +8,7 @@ const { BucketDeployment, Source } = require('@aws-cdk/aws-s3-deployment');
 
 // Media Shuttle Submit Portal Registration key to secure requests between Media Shuttle and the external Metadata
 // form service.
-const REGISTRATION_KEY = '<Insert Your Media Shuttle Submit Portal Metadata Registration Key Here>';
+const REGISTRATION_KEY = '1287f7c7-b792-4c4f-9333-83254ba20af9';
 
 class MediaShuttleMetadataServiceStack extends Stack {
     constructor(scope, id, props) {
@@ -54,10 +54,6 @@ class MediaShuttleMetadataServiceStack extends Stack {
         new CfnOutput(this, 'Lambda Function', { value: metadataLambda.functionArn });
         new CfnOutput(this, 'S3 Bucket', { value: metadataBucket.bucketArn });
         new CfnOutput(this, 'Metadata HTTP API Base Url', { value: metadataHttpApi.url });
-
-        console.log(
-            `Metadata service successfully deployed. Update the 'Metadata provider URL' setting under 'Metadata' in the Media Shuttle portal admin console to ${metadataHttpApi.url}/form to complete the setup`
-        );
     }
 }
 
