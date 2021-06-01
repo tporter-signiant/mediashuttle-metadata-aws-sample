@@ -10,20 +10,22 @@
     "node": ">=14"
   },
   "scripts": {
-    "build": "npm run build:zip && npm ci",
+    "build": "npm run build:zip && npm i",
     "build:clean": "mkdir -p deploy/lambda && rm -rf deploy/lambda/*",
     "build:zip": "npm run build:clean && npm ci --production && zip -r deploy/lambda/function.zip node_modules src > /dev/null",
     "cdk": "cdk",
     "deploy": "cdk deploy '*' --require-approval never"
   },
   "devDependencies": {
-    "@aws-cdk/aws-apigatewayv2": "^1.97.0",
-    "@aws-cdk/aws-apigatewayv2-integrations": "^1.97.0",
-    "@aws-cdk/aws-lambda": "^1.97.0",
-    "@aws-cdk/aws-s3": "^1.97.0",
-    "@aws-cdk/aws-s3-deployment": "^1.97.0",
-    "@aws-cdk/core": "^1.97.0",
-    "aws-cdk": "^1.97.0",
+    "@aws-cdk/aws-apigatewayv2": "~1.100.0",
+    "@aws-cdk/cloudformation-include": "~1.100.0",
+    "@aws-cdk/aws-apigatewayv2-integrations": "~1.100.0",
+    "@aws-cdk/aws-lambda": "~1.100.0",
+    "@aws-cdk/aws-s3": "~1.100.0",
+    "@aws-cdk/aws-s3-deployment": "~1.100.0",
+    "@aws-cdk/aws-dynamodb": "~1.100.0",
+    "@aws-cdk/core": "~1.100.0",
+    "aws-cdk": "~1.100.0",
     "eslint": "^7.23.0",
     "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-prettier": "^3.3.1",
@@ -32,6 +34,7 @@
   "dependencies": {
     "aws-sdk": "^2.882.0",
     "byte-size": "^7.0.1",
+    "cdk-dasm": "^1.100.0",
     "ejs": "^3.1.6",
     "got": "^11.8.2",
     "qs": "^6.10.1"
